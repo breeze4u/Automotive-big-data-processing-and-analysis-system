@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <style>
+		body {
+			background-image: url(img.png);
+			background-size: cover;
+			background-position: center;
+			font-family: Arial, sans-serif;
+		}
+		.card {
+			background: rgba(255, 255, 255, 0.9);
+			margin: 0 auto;
+			max-width: 400px;
+			margin-top: 50px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			padding: 20px;
+		}
+		h1 {
+			text-align: center;
+			font-size: 24px;
+			color: #333;
+			margin-bottom: 20px;
+		}
+		.logo {
+			text-align: center;
+			margin-top: 50px;
+			color: #0000;
+			font-size: 30px;
+			text-shadow: 2px 2px #333;
+		}
+	</style>
+</head>
+<body>
+<div class="logo">汽车之家</div>
+    <div class="card">
+        <form class="needs-validation" novalidate>
+            <h1>登录</h1>
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+                <div class="invalid-feedback">
+                    请输入用户名
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" class="form-control" id="password" name="password" minlength="8" required>
+                <div class="invalid-feedback">
+                    密码不能少于8个字符
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                <label class="form-check-label" for="remember">记住我</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">登录</button>
+            <hr>
+            <p class="text-center">没有账户？ <a href="register.html">去注册</a></p>
+        </form>
+    </div>
+
+    <script>
+		// 启用表单验证
+		(function() {
+			'use strict';
+			var forms = document.querySelectorAll('.needs-validation');
+			Array.prototype.slice.call(forms).forEach(function(form) {
+				form.addEventListener('submit', function(event) {
+					if (!form.checkValidity()) {
+						event.preventDefault();
+						event.stopPropagation();
+					}
+					form.classList.add('was-validated');
+				}, false);
+			});
+		})();
+    </script>
+</body>
+</html>

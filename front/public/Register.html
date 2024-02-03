@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <!-- 引入Bootstrap样式 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <style>
+	body {
+		background-image: url(img_1.png);
+		background-size: cover;
+		background-position: center;
+		font-family: Arial, sans-serif;
+	}
+	.card {
+		background: rgba(255, 255, 255, 0.9);
+		margin: 0 auto;
+		max-width: 400px;
+		margin-top: 50px;
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		padding: 20px;
+	}
+	h1 {
+		text-align: center;
+		font-size: 24px;
+		color: #333;
+		margin-bottom: 20px;
+	}
+	</style>
+</head>
+<body>
+<div class="card">
+    <form class="needs-validation" novalidate>
+        <h1>注册</h1>
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+            <div class="invalid-feedback">
+                请输入用户名
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" class="form-control" id="password" name="password" minlength="8" required>
+            <div class="invalid-feedback">
+                密码不能少于8个字符
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="confirm-password">确认密码</label>
+            <input type="password" class="form-control" id="confirm-password" name="confirm-password" minlength="8" required>
+            <div class="invalid-feedback">
+                请输入确认密码
+            </div>
+            <div class="valid-feedback">
+                密码输入不一一致
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">注册</button>
+        <hr>
+        <p class="text-center">已有账户？ <a href="login.html">去登录</a></p>
+    </form>
+</div>
+<!-- 引入Bootstrap JS -->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+<script>
+		// 启用表单验证
+		(function() {
+			'use strict';
+			var forms = document.querySelectorAll('.needs-validation');
+			Array.prototype.slice.call(forms).forEach(function(form) {
+				form.addEventListener('submit', function(event) {
+					if (!form.checkValidity()) {
+						event.preventDefault();
+						event.stopPropagation();
+					}
+					form.classList.add('was-validated');
+				}, false);
+			});
+			// 确认密码的验证
+			var confirmPassword = document.getElementById('confirm-password');
+			var password = document.getElementById('password');
+			confirmPassword.addEventListener('input', function() {
+				if (confirmPassword.value === '') {
+					confirmPassword.classList.remove('is-invalid', 'is-valid');
+				} else if (confirmPassword.value === password.value) {
+					confirmPassword.classList.remove('is-invalid');
+					confirmPassword.classList.add('is-valid');
+				} else {
+					confirmPassword.classList.remove('is-valid');
+					confirmPassword.classList.add('is-invalid');
+				}
+			});
+		})();
+	</script>
+</body>
+</html>
